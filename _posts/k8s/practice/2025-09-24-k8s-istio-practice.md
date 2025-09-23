@@ -53,7 +53,7 @@ docker build -t fastapi-demo:0.1 .
 <br>
 
 deployment.yaml
-```shell
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -79,7 +79,7 @@ spec:
 <br>
 
 service.yaml
-```shell
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -131,7 +131,7 @@ manifest/                 # Helm 차트 루트 디렉토리
 <br>
 
 Chart.yaml
-```shell
+```yaml
 apiVersion: v2
 name: fastapi-chart
 description: A Helm chart for FastAPI demo
@@ -142,8 +142,7 @@ appVersion: "0.1"
 <br>
 
 deployment.yaml
-```shell
-{% raw %}
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -165,14 +164,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.port }}
-{% endraw %}
 ```
 
 <br>
 
 service.yaml
-```shell
-{% raw %}
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -187,7 +184,6 @@ spec:
       port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       nodePort: {{ .Values.service.nodePort }}
-{% endraw %}
 ```
 
 helm으로 배포
